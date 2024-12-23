@@ -23,7 +23,7 @@ Candidate List Viewer is a React-based web application that allows users to view
 
 ## 📸 Screenshot:
 - **Home Page** :
-![image](https://github.com/user-attachments/assets/e5fd707e-d8bf-4851-8d2f-ac473d1f976e)
+![image](https://github.com/user-attachments/assets/370e9ef7-8c09-4f70-8f1e-5eb6223553f1)
 
 - **Search By Name or Skills** :
  ![image](https://github.com/user-attachments/assets/ebc2f495-df96-4f4b-b8a8-23e9e02fbd5f)
