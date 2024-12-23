@@ -10,7 +10,7 @@ function CandidateViewer() {
   const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/candidates").then((response) => {
+    axios.get("https://candidate-list-viewer-api.vercel.app/api/candidates").then((response) => {
       setCandidates(response.data);
       setFilteredCandidates(response.data);
     });
