@@ -8,10 +8,9 @@ function CandidateViewer() {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [search, setSearch] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
-  const [error, setError] = useState(null); // For error handling
-
+  const [error, setError] = useState(null); 
   useEffect(() => {
-    // Fetch data from API
+    
     axios
       .get("https://candidate-list-viewer-api.vercel.app/api/candidates")
       .then((response) => {
@@ -32,7 +31,7 @@ function CandidateViewer() {
         candidate.name.toLowerCase().includes(value) ||
         candidate.skills.toLowerCase().includes(value)
     );
-    handleSort(filtered); // Reapply sorting after search filter
+    handleSort(filtered);
   };
 
   const handleSort = (data = filteredCandidates) => {
@@ -51,7 +50,7 @@ function CandidateViewer() {
         <h1 className="title">Candidate List Viewer</h1>
       </div>
 
-      {/* Display error if API call fails */}
+     
       {error && <div className="alert alert-danger">{error}</div>}
 
       <div className="d-flex justify-content-center mb-4">
