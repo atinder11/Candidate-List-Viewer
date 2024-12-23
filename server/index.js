@@ -3,9 +3,12 @@ const cors = require('cors');
 const app = express();
 
 
-app.use(cors({
-  origin: 'https://candidate-list-viewer.vercel.app' 
-}));
+const corsOptions = {
+  origin: 'https://candidate-list-viewer.vercel.app', 
+  methods: 'GET',
+};
+
+app.use(cors(corsOptions)); 
 
 const candidates = [
   { id: 1, name: 'Sameer Singh', skills: 'JavaScript, React', experience: 5 },
