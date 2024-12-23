@@ -8,28 +8,35 @@ function CandidateViewer() {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
   const [search, setSearch] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+  const [error, setError] = useState(null); // For error handling
 
   useEffect(() => {
-    axios.get("https://candidate-list-viewer-api.vercel.app/api/candidates").then((response) => {
-      setCandidates(response.data);
-      setFilteredCandidates(response.data);
-    });
+    // Fetch data from API
+    axios
+      .get("https://candidate-list-viewer-api.vercel.app/api/candidates")
+      .then((response) => {
+        setCandidates(response.data);
+        setFilteredCandidates(response.data);
+      })
+      .catch((error) => {
+        setError("Failed to fetch candidates. Please try again later.");
+        console.error("API Error:", error);
+      });
   }, []);
 
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearch(value);
-    setFilteredCandidates(
-      candidates.filter(
-        (candidate) =>
-          candidate.name.toLowerCase().includes(value) ||
-          candidate.skills.toLowerCase().includes(value)
-      )
+    const filtered = candidates.filter(
+      (candidate) =>
+        candidate.name.toLowerCase().includes(value) ||
+        candidate.skills.toLowerCase().includes(value)
     );
+    handleSort(filtered); // Reapply sorting after search filter
   };
 
-  const handleSort = () => {
-    const sorted = [...filteredCandidates].sort((a, b) =>
+  const handleSort = (data = filteredCandidates) => {
+    const sorted = [...data].sort((a, b) =>
       sortOrder === "asc"
         ? a.experience - b.experience
         : b.experience - a.experience
@@ -43,6 +50,10 @@ function CandidateViewer() {
       <div className="text-center mb-4">
         <h1 className="title">Candidate List Viewer</h1>
       </div>
+
+      {/* Display error if API call fails */}
+      {error && <div className="alert alert-danger">{error}</div>}
+
       <div className="d-flex justify-content-center mb-4">
         <div className="input-group">
           <input
@@ -57,6 +68,7 @@ function CandidateViewer() {
           </span>
         </div>
       </div>
+
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
@@ -66,7 +78,7 @@ function CandidateViewer() {
               <th>Skills</th>
               <th>
                 Years of Experience
-                <button className="btn btn-link" onClick={handleSort}>
+                <button className="btn btn-link" onClick={() => handleSort()}>
                   <FaFilter className="filter-icon" />
                 </button>
               </th>
