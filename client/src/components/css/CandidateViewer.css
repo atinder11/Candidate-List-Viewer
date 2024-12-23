@@ -1,0 +1,91 @@
+.title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #0063ff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.filter-icon {
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.table th {
+  background-color: #000;
+  color: white;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #666;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #333;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table th:first-child,
+.table td:first-child {
+  width: 5%;
+  text-align: center;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+}
+
+.input-group {
+  width: 50%; /* Set fixed width for the search bar */
+  position: relative;
+}
+
+.search-input {
+  padding-right: 35px; /* Space for the icon */
+  border-radius: 0px; /* No curve for edges */
+  border: 1px solid #ccc; /* Light border color */
+  padding-left: 20px; /* Add space for icon inside */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #0063ff;
+  background: none;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:focus + .search-icon {
+  color: #0056b3;
+}
+
+input {
+  text-transform: none;
+  padding-right: 30px;
+}
